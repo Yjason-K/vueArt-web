@@ -1,54 +1,58 @@
-# React + TypeScript + Vite
+# Vue-Art (비오아트)
+**전시회 검색 및 예약 사이트 개발**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Git 전략 (Forking Workflow)
+## 🔄 Fork & Pull Request Workflow
+![Forking Workflow](https://miro.medium.com/v2/resize:fit:1210/format:webp/1*NbRsghbBK86UskBm5WGu7w.png)
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+# 폴더 구조 (Screaming Architecture)
+```
+src/
+├── components/
+├── hooks/
+├── pages/
+├── services/
+├── stores/
+├── types/
+└── utils/
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+# 📦 기술 스택
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    "react-x": reactX,
-    "react-dom": reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs["recommended-typescript"].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-});
-```
+## 🧑‍💻 Language & Environment
+- **Node.js**: `20.18.1`
+- **pnpm**: `10.8.0`
+- **TypeScript**: `5.7.2`
+
+## ⚙️ Build
+- **Build Tool**: Vite + SWC
+
+## 🚀 Deployment
+- **CI/CD**: GitHub Actions
+
+## 🧩 주요 패키지 구성
+
+### 🔗 Core
+- **React**: `18`
+
+### 🔀 Routing
+- **React Router**: `v7`
+
+### 🔄 Server Fetching
+- **Axios**
+- **React Query**: `v5`
+
+### 🧾 Form
+- **Zod**: `3.42.2`
+- **React Hook Form**: `7.55.0`
+
+### 🎨 Formatter & Lint
+- **ESLint**: `9.21.0`
+- **Prettier**: `3.5.3`
+
+### 🖼️ UI Framework
+- **Chakra UI**: `v2`
+
+### 🗂️ 상태 관리
+- **Zustand 🐻** 
