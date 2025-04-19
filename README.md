@@ -21,7 +21,7 @@ src/
 └── utils/
 ```
 
-# commit convention
+# 커밋 메시지 컨벤션 Commit Message Convention
 
 ## ✅ Type 종류
 
@@ -39,6 +39,9 @@ src/
 | `revert`   | 이전 커밋 되돌리기                     |
 
 ---
+
+<br/>
+<br/>
 
 # 📦 기술 스택
 
