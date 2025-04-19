@@ -7,6 +7,9 @@
     "skipLibCheck": true,
     // 상대경로 설정
     "paths": {
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@pages/*": ["./src/pages/*"],
       "@/*": ["./src/*"]
     },
 
