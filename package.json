@@ -7,7 +7,14 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --cache --fix --max-warnings=0"
+    ],
+    "*.{md,json,yml}": "prettier --write --cache ./src"
   },
   "dependencies": {
     "@chakra-ui/anatomy": "2.2.2",
@@ -40,6 +47,8 @@
     "eslint-plugin-react-hooks": "5.1.0",
     "eslint-plugin-react-refresh": "0.4.19",
     "globals": "15.15.0",
+    "husky": "9.1.7",
+    "lint-staged": "15.5.1",
     "prettier": "3.5.3",
     "typescript": "5.7.2",
     "typescript-eslint": "8.24.1",
