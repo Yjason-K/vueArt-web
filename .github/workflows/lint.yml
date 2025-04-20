@@ -1,0 +1,53 @@
+name: 변경된 파일 Lint Check
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  lint:
+    name: 🔍 변경된 파일 Lint 검사
+    runs-on: ubuntu-22.04
+
+    strategy:
+      matrix:
+        node-version: [20]
+
+    steps:
+      - name: ✅ 코드 체크아웃
+        uses: actions/checkout@v4
+
+      - name: 📦 pnpm 설치
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: 🛠 Node.js 설정
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - name: 📥 의존성 설치
+        run: pnpm install
+
+      - name: 🔄 기준 브랜치 fetch
+        run: git fetch origin develop
+
+      - name: 📁 변경된 파일 확인
+        id: changed-files
+        run: |
+          CHANGED_FILES=$(git diff --name-only origin/develop...HEAD | grep -E '\.(js|jsx|ts|tsx)$' || true)
+          echo "$CHANGED_FILES"
+          echo "$CHANGED_FILES" > changed_files.txt
+
+      - name: ✨ ESLint 실행
+        run: |
+          if [ -s changed_files.txt ]; then
+            echo "변경된 파일:"
+            cat changed_files.txt
+            cat changed_files.txt | xargs pnpm exec eslint
+          else
+            echo "변경된 JS/TS 파일 없음. ESLint 생략."
+          fi
