@@ -6,13 +6,11 @@ import {
   Box,
   Button,
   ButtonGroup,
-  ButtonProps,
   Divider,
   Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
-  Icon,
   IconButton,
   VStack,
 } from '@chakra-ui/react';
@@ -175,26 +173,26 @@ const SocialLoginBtnList = () => {
   );
 };
 
-const SocialLoginBtn = ({
-  icon,
-  onClick,
-  ariaLabel,
-}: {
-  icon: React.ReactNode;
-  onClick: ButtonProps['onClick'];
-  ariaLabel: ButtonProps['aria-label'];
-}) => {
-  return (
-    <Button
-      variant="ghost"
-      colorScheme="gray"
-      w="48px"
-      h="48px"
-      borderRadius="50%"
-      aria-label={ariaLabel}
-      onClick={onClick}
-    >
-      {icon}
-    </Button>
-  );
-};
+// const SocialLoginBtn = ({
+//   icon,
+//   onClick,
+//   ariaLabel,
+// }: {
+//   icon: React.ReactNode;
+//   onClick: ButtonProps['onClick'];
+//   ariaLabel: ButtonProps['aria-label'];
+// }) => {
+//   return (
+//     <Button
+//       variant="ghost"
+//       colorScheme="gray"
+//       w="48px"
+//       h="48px"
+//       borderRadius="50%"
+//       aria-label={ariaLabel}
+//       onClick={onClick}
+//     >
+//       {icon}
+//     </Button>
+//   );
+// };
