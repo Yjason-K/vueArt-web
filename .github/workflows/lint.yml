@@ -1,7 +1,8 @@
 name: 변경된 파일 Lint Check
 
 on:
-  pull_request:
+  pull_request_target:
+    types: [opened, synchronize]
 
 jobs:
   lint:
