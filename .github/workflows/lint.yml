@@ -4,6 +4,10 @@ on:
   pull_request_target:
     types: [opened, synchronize]
 
+permissions:
+  contents: read
+  pull-requests: read
+
 jobs:
   lint:
     name: 🔍 변경된 파일 Lint 검사
@@ -14,8 +18,10 @@ jobs:
         node-version: [20]
 
     steps:
-      - name: ✅ 코드 체크아웃
+      - name: ✅ 기준 브랜치 체크아웃
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
 
       - name: 📦 pnpm 설치
         uses: pnpm/action-setup@v4
@@ -31,18 +37,18 @@ jobs:
       - name: 📥 의존성 설치
         run: pnpm install
 
-      - name: 🔄 기준 브랜치 fetch
-        run: git fetch origin develop
-
-      - name: 📁 변경된 파일 확인
+      - name: 🔄 변경된 파일 목록 추출
         id: changed-files
-        run: |
-          CHANGED_FILES=$(git diff --name-only origin/develop...HEAD | grep -E '\.(js|jsx|ts|tsx)$' || true)
-          echo "$CHANGED_FILES"
-          echo "$CHANGED_FILES" > changed_files.txt
+        uses: tj-actions/changed-files@v44
+        with:
+          base_sha: ${{ github.event.pull_request.base.sha }}
+          sha: ${{ github.event.pull_request.head.sha }}
 
-      - name: ✨ ESLint 실행
+      - name: 🔍 Lint 검사 실행
         run: |
+          echo "${{ steps.changed-files.outputs.all_changed_files }}" > changed_files.txt
+          grep -E '\.(js|jsx|ts|tsx)$' changed_files.txt || echo '' > changed_files.txt
+
           if [ -s changed_files.txt ]; then
             echo "변경된 파일:"
             cat changed_files.txt
