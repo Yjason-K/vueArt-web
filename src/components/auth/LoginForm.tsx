@@ -13,10 +13,12 @@ import {
   FormLabel,
   IconButton,
   VStack,
+  useDisclosure,
 } from '@chakra-ui/react';
 import { ChatIcon, LockIcon, ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { IconInput } from '../input/IconInput';
 import { useNavigate } from 'react-router-dom';
+import { SignupModal } from './SignupModal';
 
 // Define the schema for form validation
 const loginSchema = z.object({
@@ -47,7 +49,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
   } = useForm<LoginFormData>();
 
   const [showPassword, setShowPassword] = useState(false);
-
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const validateForm = (data: LoginFormData) => {
     try {
       const validatedData = loginSchema.parse(data);
@@ -114,13 +116,14 @@ export const LoginForm: React.FC<LoginFormProps> = ({
           로그인
         </Button>
       </VStack>
-      <LoginRouteBtn />
+      <LoginRouteBtn onOpen={onOpen} />
+      <SignupModal isOpen={isOpen} onClose={onClose} />
       <SocialLoginBtnList />
     </Flex>
   );
 };
 
-const LoginRouteBtn = () => {
+const LoginRouteBtn = ({ onOpen }: { onOpen: () => void }) => {
   const navigate = useNavigate();
 
   return (
@@ -141,12 +144,7 @@ const LoginRouteBtn = () => {
       >
         비밀번호 찾기
       </Button>
-      <Button
-        w="100%"
-        variant={'ghost'}
-        colorScheme="gray"
-        onClick={() => navigate('/signup')}
-      >
+      <Button w="100%" variant={'ghost'} colorScheme="gray" onClick={onOpen}>
         회원가입
       </Button>
     </ButtonGroup>
