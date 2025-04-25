@@ -19,6 +19,7 @@ import { ChatIcon, LockIcon, ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { IconInput } from '../input/IconInput';
 import { useNavigate } from 'react-router-dom';
 import { SignupModal } from './SignupModal';
+import { SocialLoginBtnList } from './SocialLoginBtnList';
 
 // Define the schema for form validation
 const loginSchema = z.object({
@@ -118,6 +119,12 @@ export const LoginForm: React.FC<LoginFormProps> = ({
       </VStack>
       <LoginRouteBtn onOpen={onOpen} />
       <SignupModal isOpen={isOpen} onClose={onClose} />
+      <Box position="relative" w="100%" h="1px" bg="gray.200">
+        <Divider w="100%" />
+        <AbsoluteCenter bg="white" px="4" left="50%">
+          간편 로그인
+        </AbsoluteCenter>
+      </Box>
       <SocialLoginBtnList />
     </Flex>
   );
@@ -148,26 +155,6 @@ const LoginRouteBtn = ({ onOpen }: { onOpen: () => void }) => {
         회원가입
       </Button>
     </ButtonGroup>
-  );
-};
-
-const SocialLoginBtnList = () => {
-  return (
-    <>
-      <Box position="relative" w="100%" h="1px" bg="gray.200">
-        <Divider w="100%" />
-        <AbsoluteCenter bg="white" px="4" left="50%">
-          간편 로그인
-        </AbsoluteCenter>
-      </Box>
-      <ButtonGroup w="100%">
-        {/* <SocialLoginBtn
-          icon={<Icon   />}
-          onClick={() => {}}
-          ariaLabel="Google 로그인"
-        /> */}
-      </ButtonGroup>
-    </>
   );
 };
 
