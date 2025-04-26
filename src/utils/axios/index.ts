@@ -6,7 +6,7 @@ interface InstanceParam {
 }
 
 export const createAxiosInstance = ({
-  baseURL,
+  baseURL = 'https://10.180.220.45:8080/api',
   auth = false,
 }: InstanceParam) => {
   const instance = axios.create({

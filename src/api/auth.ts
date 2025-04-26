@@ -1,22 +1,22 @@
 import { createAxiosInstance } from '@/utils/axios';
-import { module } from '@/utils/axios/module';
+//import { module } from '@/utils/axios/module';
 
 const { get, post } = createAxiosInstance({
-  baseURL: module.auth?.url ?? '', // module 객체가 정의되었다고 가정
+  baseURL: 'http://10.180.220.45:8080/api', // module 객체가 정의되었다고 가정
 });
 
 interface SignupData {
-  userId: string;
   email: string;
+  userId: string;
   password: string;
 }
 
 export const checkUserIdDuplicate = (userId: string) => {
-  return get('/check-id', [], { params: { userId } });
+  return get('/auth/check-id', [], { params: { userId } });
 };
 
 export const signupUser = (data: SignupData) => {
-  return post('/register', [], data); // module.auth?.subModule?.register?.url 써도 됨
+  return post('/auth/sign-up', [], data); // module.auth?.subModule?.register?.url 써도 됨
 };
 
 interface LoginData {
@@ -25,5 +25,5 @@ interface LoginData {
 }
 
 export const loginUser = (data: LoginData) => {
-  return post('/login', [], data); // 구조적 경로 설계 시 subModule 사용 가능
+  return post('/auth/sign-in', [], data); // 구조적 경로 설계 시 subModule 사용 가능
 };

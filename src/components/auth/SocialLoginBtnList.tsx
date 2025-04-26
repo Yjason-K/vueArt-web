@@ -1,13 +1,14 @@
-import { Flex, IconButton, Tooltip } from '@chakra-ui/react';
-import { FcGoogle } from 'react-icons/fc';
-import { SiNaver } from 'react-icons/si';
-import { FaInstagram } from 'react-icons/fa';
+import { Flex, IconButton, Tooltip, Image } from '@chakra-ui/react';
 
 const SOCIAL_AUTH_URL = {
-  google: 'https://your-backend.com/oauth2/authorize/google',
-  naver: 'https://your-backend.com/oauth2/authorize/naver',
-  instagram: 'https://your-backend.com/oauth2/authorize/instagram',
+  google: 'Backend URL for Google login',
+  naver: 'Backend URL for Naver login',
+  instagram: 'Backend URL for Instagram login',
 };
+
+import naverLogo from '@/assets/imgs/naver_icon_circle.png';
+import googleLogo from '@/assets/imgs/google_icon_circle.png';
+import instaLogo from '@/assets/imgs/instagram_icon_square.png';
 
 export const SocialLoginBtnList = () => {
   const handleSocialLogin = (provider: 'google' | 'naver' | 'instagram') => {
@@ -26,34 +27,38 @@ export const SocialLoginBtnList = () => {
       <Tooltip label="Google 로그인" hasArrow>
         <IconButton
           aria-label="Google 로그인"
-          icon={<FcGoogle size="24" />}
+          icon={<Image src={googleLogo} boxSize="26px" objectFit="contain" />}
           onClick={() => handleSocialLogin('google')}
-          variant="outline"
+          variant={'ghost'}
           borderRadius="full"
           size="lg"
+          bg="transparent"
+          _hover={{ bg: 'gray.100' }}
         />
       </Tooltip>
       <Tooltip label="Naver 로그인" hasArrow>
         <IconButton
           aria-label="Naver 로그인"
-          icon={<SiNaver size="20" />}
+          icon={<Image src={naverLogo} boxSize="26px" objectFit="contain" />}
           onClick={() => handleSocialLogin('naver')}
-          variant="outline"
+          variant={'ghost'}
           borderRadius="full"
           size="lg"
-          color="green.500"
+          bg="transparent"
+          _hover={{ bg: 'gray.100' }}
         />
       </Tooltip>
 
       <Tooltip label="Instagram 로그인" hasArrow>
         <IconButton
           aria-label="Instagram 로그인"
-          icon={<FaInstagram size="20" />}
+          icon={<Image src={instaLogo} boxSize="24px" objectFit="contain" />}
           onClick={() => handleSocialLogin('instagram')}
-          variant="outline"
+          variant={'ghost'}
           borderRadius="full"
           size="lg"
-          color="pink.400"
+          bg="transparent"
+          _hover={{ bg: 'gray.100' }}
         />
       </Tooltip>
     </Flex>
