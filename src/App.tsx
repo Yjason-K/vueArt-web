@@ -3,6 +3,7 @@ import MainLayout from '@/components/layout/MainLayout.tsx';
 import { LoginLayout } from '@components/layout/LoaingLayout';
 import { lazy, Suspense } from 'react';
 import { CenterSpinner } from './components/spinner/Centerspinner';
+import MyPage from '@/pages/mypage/MyPage';
 
 const Login = lazy(() => import('@/pages/login/Login'));
 
@@ -19,6 +20,7 @@ function App() {
             {/* <Route path={'/signup'} element={<Signup />} /> */}
             {/* <Route path={'/find-password'} element={<FindPassword />} /> */}
           </Route>
+          <Route path="/mypage" element={<MyPage />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
