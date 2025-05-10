@@ -48,11 +48,13 @@ jobs:
         run: |
           echo "${{ steps.changed-files.outputs.all_changed_files }}" > changed_files.txt
           grep -E '\.(js|jsx|ts|tsx)$' changed_files.txt > js_ts_files.txt || echo '' > js_ts_files.txt
+          # YAML, JSON, SVG 등의 비 JS/TS 파일 제외
+          grep -v -E '\.(yml|yaml|json|svg)$' js_ts_files.txt > lint_files.txt || echo '' > lint_files.txt
 
-          if [ -s js_ts_files.txt ]; then
+          if [ -s lint_files.txt ]; then
             echo "변경된 JS/TS 파일:"
-            cat js_ts_files.txt
-            cat js_ts_files.txt | xargs pnpm exec eslint
+            cat lint_files.txt
+            cat lint_files.txt | xargs pnpm exec eslint
           else
             echo "변경된 JS/TS 파일 없음. ESLint 생략."
           fi
