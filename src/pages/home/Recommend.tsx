@@ -13,7 +13,7 @@ import { ExhibitionCard } from '@components/card/ExhibitionCard';
 import { ExhibitionStatus } from '@components/badge/StatusBadge';
 import { PageWrapper } from '@components/layout';
 
-export const Recommand = () => {
+export const Recommend = () => {
   return (
     <Box as="section" w="100%" py="12">
       <PageWrapper>
