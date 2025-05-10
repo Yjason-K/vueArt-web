@@ -1,7 +1,7 @@
 import { Badge } from '@chakra-ui/react';
 import type { BadgeProps } from '@chakra-ui/react';
 
-type ExhibitionStatus = 'upcoming' | 'bookingOpen' | 'onGoing' | 'ended';
+export type ExhibitionStatus = 'upcoming' | 'bookingOpen' | 'onGoing' | 'ended';
 
 interface StatusBadgeProps extends BadgeProps {
   status: ExhibitionStatus;
