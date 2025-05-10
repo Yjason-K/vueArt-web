@@ -47,12 +47,12 @@ jobs:
       - name: 🔍 Lint 검사 실행
         run: |
           echo "${{ steps.changed-files.outputs.all_changed_files }}" > changed_files.txt
-          grep -E '\.(js|jsx|ts|tsx)$' changed_files.txt || echo '' > changed_files.txt
+          grep -E '\.(js|jsx|ts|tsx)$' changed_files.txt > js_ts_files.txt || echo '' > js_ts_files.txt
 
-          if [ -s changed_files.txt ]; then
-            echo "변경된 파일:"
-            cat changed_files.txt
-            cat changed_files.txt | xargs pnpm exec eslint
+          if [ -s js_ts_files.txt ]; then
+            echo "변경된 JS/TS 파일:"
+            cat js_ts_files.txt
+            cat js_ts_files.txt | xargs pnpm exec eslint
           else
             echo "변경된 JS/TS 파일 없음. ESLint 생략."
           fi
