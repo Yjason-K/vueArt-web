@@ -6,7 +6,9 @@ const colors = {
   offWhite: '#F2F2DF',
   peach: '#F2E5D5',
 
-  wthite: '#FFF',
+  darkGrayAlpha: {
+    700: '#0B0C0D80',
+  },
 };
 
 export default colors;
