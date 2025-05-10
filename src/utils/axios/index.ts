@@ -90,8 +90,9 @@ export const createAxiosInstance = ({
     pathVariable?: string[],
     config?: AxiosRequestConfig,
   ): Promise<AxiosResponse<T>> => {
+    // <T> 제네릭 타입 명시
     const url = setAxiosUrl(endpoint, pathVariable);
-    return instance.get(url, config);
+    return instance.get<T>(url, config);
   };
   /**
    * HTTP POST Method
@@ -112,8 +113,9 @@ export const createAxiosInstance = ({
     data?: unknown,
     config?: AxiosRequestConfig,
   ): Promise<AxiosResponse<T>> => {
+    // <T> 제네릭 타입 명시
     const url = setAxiosUrl(endpoint, pathVariable);
-    return instance.post(url, data, config);
+    return instance.post<T>(url, data, config);
   };
   return { instance, get, post };
 };
