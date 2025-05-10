@@ -46,20 +46,18 @@ jobs:
 
       - name: 🔍 Lint 검사 실행
         run: |
-          # 1) 변경된 파일 목록을 줄 단위로 분리
+          # 1) 공백으로 나열된 파일 리스트를 줄 단위로 분리 → JS/TS 파일만 grep
           echo "${{ steps.changed-files.outputs.all_changed_files }}" \
             | tr ' ' '\n' \
-            > changed_files.txt
+            | grep -E '\.(js|jsx|ts|tsx)$' \
+            > changed_files.txt || true
 
-          # 2) JS/TS 파일만 추출
-          grep -E '\.(js|jsx|ts|tsx)$' changed_files.txt > lint_files.txt || true
-
-          # 3) ESLint 실행
-          if [ -s lint_files.txt ]; then
+          # 2) 파일이 있으면 ESLint, 없으면 건너뛰기
+          if [ -s changed_files.txt ]; then
             echo "변경된 JS/TS 파일:"
-            cat lint_files.txt
+            cat changed_files.txt
             # xargs 로 eslint 실행
-            xargs pnpm exec eslint < lint_files.txt
+            xargs pnpm exec eslint < changed_files.txt
           else
             echo "변경된 JS/TS 파일 없음. ESLint 생략."
           fi
