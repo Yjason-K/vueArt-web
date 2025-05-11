@@ -7,6 +7,7 @@ import MyPageLayout from '@/pages/mypage/MyPageLayout';
 import ProfilePage from '@/pages/mypage/ProfilePage';
 import AccountSettingsPage from '@/pages/mypage/AccountSettingsPage';
 import MyPostsPage from '@/pages/mypage/MyPostsPage';
+import Home from '@pages/home/Home';
 
 const Login = lazy(() => import('@/pages/login/Login'));
 
@@ -16,7 +17,9 @@ function App() {
       <Suspense fallback={<CenterSpinner />}>
         <Routes>
           {/* 메인 레이아웃 */}
-          <Route element={<MainLayout />}></Route>
+          <Route element={<MainLayout />}>
+            <Route path={'/'} element={<Home />} />
+          </Route>
           {/* 로그인 라우터 */}
           <Route element={<LoginLayout />}>
             <Route path={'/login'} element={<Login />} />
