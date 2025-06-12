@@ -41,8 +41,8 @@ export const Header = () => {
   return (
     <Box
       as="header"
-      bg={'offWhite'}
-      color={'darkGray'}
+      bg="gray.50"
+      color="softBlack"
       boxShadow="sm"
       position="sticky"
       top={0}
@@ -57,7 +57,7 @@ export const Header = () => {
         px={4}
       >
         {/* Logo */}
-        <Box fontSize="xl" fontWeight="bold">
+        <Box fontSize="xl" fontWeight="bold" color="softBlack">
           Vue-Art
         </Box>
 
@@ -67,8 +67,8 @@ export const Header = () => {
             {isLoggedIn ? (
               <Avatar
                 size="sm"
-                bg={'peach'}
-                color={'darkGray'}
+                bg="gray.300"
+                color="softBlack"
                 onClick={handleProfile}
                 cursor="pointer"
               />
@@ -87,6 +87,7 @@ export const Header = () => {
             aria-label="Open menu"
             icon={<HamburgerIcon />}
             variant="ghost"
+            color="softBlack"
             onClick={onOpen}
           />
         )}
@@ -107,6 +108,16 @@ export const Header = () => {
 
 function HeaderButton(props: ButtonProps) {
   return (
-    <Button size="sm" variant="ghost" _hover={{ opacity: 0.5 }} {...props} />
+    <Button
+      size="sm"
+      variant="ghost"
+      color="softBlack"
+      _hover={{
+        bg: 'gray.200',
+        color: 'softBlack',
+        opacity: 0.9,
+      }}
+      {...props}
+    />
   );
 }

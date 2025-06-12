@@ -114,9 +114,9 @@ function SliderButton(props: IconButtonProps) {
       h={10}
       w={10}
       borderRadius="full"
-      bg="whiteAlpha.800"
+      bg="gray.50"
       boxShadow="md"
-      color="darkGray"
+      color="softBlack"
       _disabled={{ opacity: 0.3, cursor: 'not-allowed' }}
       {...props}
     />
