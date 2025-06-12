@@ -2,7 +2,7 @@ import { HeroBanner } from '@pages/home/HeroBanner';
 import { Recommend } from '@pages/home/Recommend';
 import { QuickSearch } from '@pages/home/QuickSearch';
 import { SearchList } from '@pages/home/SearchList';
-// import { ExhTabs } from '@pages/home/ExhTabs';
+import { ExhTabs } from '@pages/home/ExhTabs';
 // import { CommonStore, useCommonStore } from '@/store/common';
 
 const Home = () => {
@@ -15,7 +15,7 @@ const Home = () => {
       <Recommend />
       <QuickSearch />
       <SearchList />
-      {/* <ExhTabs /> */}
+      <ExhTabs />
     </>
   );
 };
