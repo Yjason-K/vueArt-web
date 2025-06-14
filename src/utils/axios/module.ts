@@ -40,8 +40,8 @@ interface Module {
  *
  */
 // Auth, User, Category, Exhibition, Favorite Category, Notification, Reservation, Subscription, Ticket
-export const module: Module = {
-  auth: {
+export const apiModule: Module = {
+  vueArt: {
     url: import.meta.env.VITE_API_URL,
     subModule: {
       login: {
