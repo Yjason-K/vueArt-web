@@ -1,14 +1,14 @@
 import { Flex, IconButton, Tooltip, Image } from '@chakra-ui/react';
 
 const SOCIAL_AUTH_URL = {
-  google: 'Backend URL for Google login',
+  google: 'http://localhost:8080/oauth2/authorization/google',
   naver: 'Backend URL for Naver login',
   instagram: 'Backend URL for Instagram login',
 };
 
-import naverLogo from '@/assets/imgs/naver_icon_circle.png';
-import googleLogo from '@/assets/imgs/google_icon_circle.png';
-import instaLogo from '@/assets/imgs/instagram_icon_square.png';
+import naverLogo from '@assets/imgs/naver_icon_circle.png';
+import googleLogo from '@assets/imgs/google_icon_circle.png';
+import instaLogo from '@assets/imgs/instagram_icon_square.png';
 
 export const SocialLoginBtnList = () => {
   const handleSocialLogin = (provider: 'google' | 'naver' | 'instagram') => {
