@@ -60,14 +60,18 @@ export const ExhibitionCard = ({
 
       {/* 내용 */}
       <Box p={4}>
-        <Heading as="h3" size="md" mb={2} noOfLines={1} color="darkGray">
+        <Heading as="h3" size="md" mb={2} noOfLines={1} color="softBlack">
           {/* 전시회 제목 */}
-          <Link href="/exhibition/1" _hover={{ color: 'mediumGray' }}>
+          <Link
+            href="/exhibition/1"
+            _hover={{ color: 'gray.700' }}
+            color="softBlack"
+          >
             {title}
           </Link>
         </Heading>
         {/* 전시회 정보 */}
-        <Stack spacing={3} color="mediumGray" fontSize="sm" mb={4}>
+        <Stack spacing={3} color="gray.600" fontSize="sm" mb={4}>
           <Flex align="center">
             <CalendarIcon mr={1} boxSize={4} />
             <Text>{date}</Text>
@@ -77,11 +81,11 @@ export const ExhibitionCard = ({
             <Text>{location}</Text>
           </Flex>
         </Stack>
-        <Text noOfLines={2} mb={4} color="mediumGray" fontSize="sm">
+        <Text noOfLines={2} mb={4} color="gray.500" fontSize="sm">
           {description}
         </Text>
         <Flex justify="space-between" align="center">
-          <Text fontWeight="medium" color="darkGray">
+          <Text fontWeight="medium" color="softBlack">
             ₩{price}
           </Text>
           {/* @TODO 전시회 상태에 따른 로직 분기 필요 */}
@@ -89,9 +93,10 @@ export const ExhibitionCard = ({
             as={Link}
             href="/booking/1"
             size="sm"
-            bg="peach"
-            color="darkGray"
-            _hover={{ bg: 'peachAlpha.800' }}
+            px={6}
+            bg="gray.300"
+            color="softBlack"
+            _hover={{ opacity: 0.9 }}
           >
             예약하기
           </Button>

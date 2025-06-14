@@ -27,7 +27,7 @@ export const HeroBanner = () => {
       <Flex
         position="absolute"
         inset={0}
-        bg="darkGrayAlpha.700"
+        bg="softBlackAlpha.700"
         direction="column"
         align="center"
         justify="center"
@@ -38,7 +38,7 @@ export const HeroBanner = () => {
           textAlign="center"
           fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}
           fontWeight="bold"
-          color="white"
+          color="gray.50"
         >
           가까운 전시회를 지금 예약하세요
         </Heading>
@@ -60,16 +60,16 @@ function ExhibitionSearchInput() {
           type="text"
           placeholder="전시회 이름, 장소, 작가 등을 검색하세요"
           height="56px"
-          bg="white"
+          bg="gray.50"
           border="1px solid transparent"
           borderRadius="md"
           pl={12}
           pr={32}
           fontSize="lg"
           boxShadow="lg"
-          focusBorderColor="peach"
+          focusBorderColor="gray.300"
           _focus={{
-            boxShadow: '0 0 0 2px offWhite',
+            boxShadow: '0 0 0 2px gray.100',
           }}
         />
 
@@ -80,11 +80,11 @@ function ExhibitionSearchInput() {
           top="50%"
           transform="translateY(-50%)"
           height="40px"
-          bg="peach"
           px={6}
           fontSize="md"
           fontWeight="medium"
-          color="darkGray"
+          bg="gray.300"
+          color="softBlack"
           _hover={{ opacity: 0.9 }}
         >
           검색

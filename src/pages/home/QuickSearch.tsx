@@ -9,13 +9,40 @@ import {
   MenuList,
   Text,
 } from '@chakra-ui/react';
-import { PageWrapper } from '@/components/layout';
+import { PageWrapper } from '@components/layout';
+
+interface SearchMenuProps {
+  title: string;
+  options: string[];
+}
+
+const SearchMenu = ({ title, options }: SearchMenuProps) => {
+  return (
+    <Menu matchWidth>
+      <MenuButton
+        as={Button}
+        rightIcon={<ChevronDownIcon />}
+        w="100%"
+        bg="gray.200"
+        color="softBlack"
+        _hover={{ bg: 'gray.300' }}
+      >
+        {title}
+      </MenuButton>
+      <MenuList>
+        {options.map((option) => (
+          <MenuItem key={option}>{option}</MenuItem>
+        ))}
+      </MenuList>
+    </Menu>
+  );
+};
 
 export const QuickSearch = () => {
   return (
-    <Box as="section" w="100%" py="8" bg="offWhite">
+    <Box as="section" w="100%" py="8" bg="gray.50">
       <PageWrapper>
-        <Text fontSize="2xl" fontWeight="bold" mb="6">
+        <Text fontSize="2xl" fontWeight="bold" mb="6" color="softBlack">
           빠른 검색
         </Text>
         <Flex gap={3}>
@@ -57,52 +84,10 @@ const SeachOptionList = () => {
   ];
   return (
     <>
-      <Menu matchWidth>
-        <MenuButton
-          as={Button}
-          rightIcon={<ChevronDownIcon />}
-          w="100%"
-          bg="white"
-        >
-          날짜 선택
-        </MenuButton>
-        <MenuList>
-          {dateList.map((date) => (
-            <MenuItem key={date}>{date}</MenuItem>
-          ))}
-        </MenuList>
-      </Menu>
-      <Menu matchWidth>
-        <MenuButton
-          as={Button}
-          rightIcon={<ChevronDownIcon />}
-          w="100%"
-          bg="white"
-        >
-          장소 선택
-        </MenuButton>
-        <MenuList>
-          {locationList.map((location) => (
-            <MenuItem key={location}>{location}</MenuItem>
-          ))}
-        </MenuList>
-      </Menu>
-      <Menu matchWidth>
-        <MenuButton
-          as={Button}
-          rightIcon={<ChevronDownIcon />}
-          w="100%"
-          bg="white"
-        >
-          분야 선택
-        </MenuButton>
-        <MenuList>
-          {fieldList.map((field) => (
-            <MenuItem key={field}>{field}</MenuItem>
-          ))}
-        </MenuList>
-      </Menu>
-      <Button bg="peach" px={6}>
+      <SearchMenu title="날짜 선택" options={dateList} />
+      <SearchMenu title="장소 선택" options={locationList} />
+      <SearchMenu title="분야 선택" options={fieldList} />
+      <Button px={6} bg="gray.300" color="softBlack" _hover={{ opacity: 0.9 }}>
         검색
       </Button>
     </>

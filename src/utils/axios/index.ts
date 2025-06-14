@@ -57,7 +57,7 @@ export const createAxiosInstance = ({
    *  3. \ (back slash) -> %5c (%5C 대문자 사용 불가)
    *
    *  @param endpoint main axios request URL
-   *  @param subUrl sub paths separated by slash (ex. 'id/name' -> ['id', 'name])
+   *  @param subUrl sub paths separated by slash (ex. 'id/name' -> ['id', 'name'])
    **/
   function setAxiosUrl(endpoint: string, subUrl?: string[]): string {
     if (subUrl && subUrl.length > 0) {
@@ -117,5 +117,72 @@ export const createAxiosInstance = ({
     const url = setAxiosUrl(endpoint, pathVariable);
     return instance.post<T>(url, data, config);
   };
-  return { instance, get, post };
+
+  /**
+   * HTTP PUT Method
+   * <pre>
+   *   - RequestURL : ${serverUrl}/${baseUrl}/${pathVariable}
+   *   - RequestBody : ${data}
+   *   - Content-type : application/json
+   * </pre>
+   * @param endpoint endpoint
+   * @param {string[]} pathVariable paths separated by slash
+   * @param data requestBody
+   * @param config
+   * @return {AxiosResponse<T>} AxiosResponse
+   */
+  const put = async <T>(
+    endpoint: string,
+    pathVariable?: string[],
+    data?: unknown,
+    config?: AxiosRequestConfig,
+  ): Promise<AxiosResponse<T>> => {
+    const url = setAxiosUrl(endpoint, pathVariable);
+    return instance.put<T>(url, data, config);
+  };
+
+  /**
+   * HTTP PATCH Method
+   * <pre>
+   *   - RequestURL : ${serverUrl}/${baseUrl}/${pathVariable}
+   *   - RequestBody : ${data}
+   *   - Content-type : application/json
+   * </pre>
+   * @param endpoint endpoint
+   * @param {string[]} pathVariable paths separated by slash
+   * @param data requestBody
+   * @param config
+   * @return {AxiosResponse<T>} AxiosResponse
+   */
+  const patch = async <T>(
+    endpoint: string,
+    pathVariable?: string[],
+    data?: unknown,
+    config?: AxiosRequestConfig,
+  ): Promise<AxiosResponse<T>> => {
+    const url = setAxiosUrl(endpoint, pathVariable);
+    return instance.patch<T>(url, data, config);
+  };
+
+  /**
+   * HTTP DELETE Method
+   * <pre>
+   *   - RequestURL : ${serverUrl}/${baseUrl}/${pathVariable}
+   *   - Content-type : application/json
+   * </pre>
+   * @param endpoint endpoint
+   * @param {string[]} pathVariable paths separated by slash
+   * @param config
+   * @return {AxiosResponse<T>} AxiosResponse
+   */
+  const remove = async <T>(
+    endpoint: string,
+    pathVariable?: string[],
+    config?: AxiosRequestConfig,
+  ): Promise<AxiosResponse<T>> => {
+    const url = setAxiosUrl(endpoint, pathVariable);
+    return instance.delete<T>(url, config);
+  };
+
+  return { instance, get, post, put, patch, remove };
 };
