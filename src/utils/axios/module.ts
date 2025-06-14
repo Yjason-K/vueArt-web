@@ -39,4 +39,38 @@ interface Module {
  * 서비스별로 구조화된 API 엔드포인트 맵을 제공합니다.
  *
  */
-export const module: Module = {};
+// Auth, User, Category, Exhibition, Favorite Category, Notification, Reservation, Subscription, Ticket
+export const module: Module = {
+  auth: {
+    url: import.meta.env.VITE_API_URL,
+    subModule: {
+      login: {
+        url: '/auth',
+      },
+      user: {
+        url: '/user',
+      },
+      category: {
+        url: '/category',
+      },
+      exhibition: {
+        url: '/exhibition',
+      },
+      favoriteCategory: {
+        url: '/favorite-category',
+      },
+      notification: {
+        url: '/notification',
+      },
+      reservation: {
+        url: '/reservation',
+      },
+      subscription: {
+        url: '/subscription',
+      },
+      ticket: {
+        url: '/ticket',
+      },
+    },
+  },
+};
