@@ -9,7 +9,7 @@ permissions:
   pull-requests: read
 
 jobs:
-  lint:
+  build:
     name: 🔍 변경된 파일 Lint 검사
     runs-on: ubuntu-22.04
 
