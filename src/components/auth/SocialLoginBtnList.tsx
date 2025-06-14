@@ -8,7 +8,7 @@ const SOCIAL_AUTH_URL = {
 
 import naverLogo from '@assets/imgs/naver_icon_circle.png';
 import googleLogo from '@assets/imgs/google_icon_circle.png';
-import instaLogo from '@assets/imgs/instagram_icon_square.png';
+import instaLogo from '@assets/imgs/Instagram_icon_square.png';
 
 export const SocialLoginBtnList = () => {
   const handleSocialLogin = (provider: 'google' | 'naver' | 'instagram') => {
