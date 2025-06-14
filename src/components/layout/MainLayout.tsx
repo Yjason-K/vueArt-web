@@ -1,12 +1,19 @@
-import { Box } from '@chakra-ui/react';
 import { Outlet } from 'react-router-dom';
+
+import { Flex } from '@chakra-ui/react';
+
+import { Header } from '@components/header/Header';
+import { Footer } from '@components/footer/Footer';
 
 const MainLayout = () => {
   return (
-    <>
-      <Box as={'header'}>{/* Header 표시 영역 */}</Box>
-      <Outlet />
-    </>
+    <Flex direction="column" minH="100vh" pos={'relative'}>
+      <Header />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
+    </Flex>
   );
 };
 

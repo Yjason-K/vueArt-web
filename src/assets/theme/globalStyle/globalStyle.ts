@@ -1,8 +1,11 @@
 const GlobalStyle = {
   styles: {
     global: {
-      html: {
-        fontSize: '62.5%',
+      body: {
+        width: '100%',
+        height: '100%',
+        margin: 0,
+        padding: 0,
       },
     },
   },
